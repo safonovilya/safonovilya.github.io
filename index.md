@@ -1,8 +1,10 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: default
+title: Ilya Safonov
 ---
 
-Robust CV site
+Simple site built by jekyll
+
+todo:
+- add info
+- add styling  

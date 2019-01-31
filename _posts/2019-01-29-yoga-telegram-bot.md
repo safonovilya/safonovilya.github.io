@@ -2,7 +2,7 @@
 layout: default
 title:  "Telegram bot for making reservation Yoga class."
 date:   2019-01-29 15:33:54 +0500
-thumbnail: "/images/telegram.png"
+thumbnail: "/images/telegram-logo.png"
 categories: demo telegram_bot
 ---
 

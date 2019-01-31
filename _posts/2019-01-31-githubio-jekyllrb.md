@@ -1,9 +1,9 @@
 ---
 layout: default
 title:  "How to Github.io"
-date:   2019-01-29 15:33:54 +0500
+date:   2019-01-31 14:02:04 +0500
 thumbnail: "/images/github.png"
-categories: howto  
+categories: howto
 ---
 
 Some useful links to build pages on github.io.

@@ -3,30 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about/">About Page</a></li>
-      </ul>
-    </nav>
-    <h1>{{ page.title }}</h1>
-    <section>
-      {{ content }}
-    </section>
-    <footer>
-      &copy; Ilya Safonov
-    </footer>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130147750-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    {% include nav.html %}
+    <div class="container">
+      <h1 class="mb-3">{{ page.title }}</h1>
+      <div class="mb-3 mt-3">
+        {{ content }}
+      </div>
 
-      gtag('config', 'UA-130147750-2');
-    </script>
+    </div>
+    {% include footer.html %}
+    {% include body_metrics.html %}
   </body>
 </html>

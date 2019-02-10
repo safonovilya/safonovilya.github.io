@@ -3,9 +3,9 @@ layout: home
 title: Ilya Safonov
 ---
 
-<div class="row">
+<!-- <div class="row">
 {% include particles.html %}
-</div>
+</div> -->
 
 <blockquote class="blockquote">
   <p class="mb-0">Make it work, then make it better</p>

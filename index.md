@@ -17,8 +17,10 @@ title: Ilya Safonov
   {% for post in site.posts %}
     <div class="col-md-6 col-lg-4 ">
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top d-sm-none d-md-block"
-         src="{{ post.thumbnail }}" alt="Card image cap">
+        <a href="{{site.baseurl}}{{ post.url }}">
+          <img class="card-img-top d-sm-none d-md-block"
+           src="{{ post.thumbnail }}" alt="Card image cap">
+        </a>
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
           <p class="card-text">{{ post.excerpt }}</p>

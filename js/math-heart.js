@@ -1,4 +1,4 @@
-var width = 750,
+var width = 420,
     height = 420;
 var canvas = d3.select('#container')
                .append('canvas')
@@ -9,14 +9,32 @@ var canvas = d3.select('#container')
     radius = 200,
     range = 200,
     multiplier = 1;
-
+var multiplierInput = document.getElementById("multiplierInput");
 var points = d3.range(range).map(dotsOnCircle);
 var interval = setInterval(ticked, 1500);
 ticked();
 
+function starInterval() {
+  interval = setInterval(ticked, 1500);
+}
+
+function stopInterval() {
+  clearInterval(interval)
+}
+
+function stepLeft(){
+  stopInterval();
+  multiplier-=2;
+  ticked();
+}
+function stepRight(){
+  stopInterval();
+  ticked();
+}
+
 function ticked() {
   context.clearRect(0, 0, width, height);
-  multiplier++;
+  multiplierInput.value = multiplier++;
   console.log(`Ticked multiplier: ${multiplier}`)
   var links = points.map(linkDots)
 

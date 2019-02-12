@@ -1,5 +1,21 @@
 var width = 420,
     height = 420;
+
+// fetch params from url
+var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
+
 var canvas = d3.select('#container')
                .append('canvas')
                .attr('width', width)
@@ -8,11 +24,30 @@ var canvas = d3.select('#container')
                     .getContext('2d'),
     radius = 200,
     range = 200,
-    multiplier = 1;
+    multiplier = qs['multiplier'] || 1;
 var multiplierInput = document.getElementById("multiplierInput");
 var points = d3.range(range).map(dotsOnCircle);
-var interval = setInterval(ticked, 1500);
+var interval = null
+if (!qs['multiplier']){
+   interval = setInterval(ticked, 1500);
+}
 ticked();
+
+
+document.addEventListener('keyup', (event) => {
+
+  const keyName = event.key;
+  stopInterval();
+  if (keyName === 'ArrowLeft' || keyName === 'ArrowDown') {
+    stepLeft()
+  } else if (keyName === 'ArrowRight' || keyName === 'ArrowUp') {
+    stepRight()
+  } else if (keyName === 'Enter') {
+    multiplier = +multiplierInput.value;
+    ticked();
+  }
+
+});
 
 function starInterval() {
   interval = setInterval(ticked, 1500);

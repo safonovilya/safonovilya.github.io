@@ -1,5 +1,6 @@
-var width = 420,
-    height = 420;
+var width = 320,
+    height = 320;
+const lineColor = '#c76868';
 
 // fetch params from url
 var qs = (function(a) {
@@ -22,7 +23,7 @@ var canvas = d3.select('#container')
                .attr('height', height),
     context = canvas.node()
                     .getContext('2d'),
-    radius = 200,
+    radius = 150,
     range = 200,
     multiplier = qs['multiplier'] || 2;
 var multiplierInput = document.getElementById("multiplierInput");
@@ -33,9 +34,7 @@ if (!qs['multiplier']){
 }
 ticked();
 
-
 document.addEventListener('keyup', (event) => {
-
   const keyName = event.key;
   stopInterval();
   if (keyName === 'ArrowLeft' || keyName === 'ArrowDown') {
@@ -49,8 +48,10 @@ document.addEventListener('keyup', (event) => {
 });
 
 function starInterval() {
-  multiplier++;
-  interval = setInterval(ticked, 1500);
+  interval = setInterval(()=>{
+    multiplier++
+    ticked();
+  }, 500);
 }
 
 function stopInterval() {
@@ -76,7 +77,7 @@ function ticked(step) {
 
   context.beginPath();
   links.forEach(drawLink);
-  context.strokeStyle = "#aaa";
+  context.strokeStyle = lineColor;
   context.stroke();
 
   context.beginPath();
@@ -92,7 +93,7 @@ function drawLink(d) {
 function drawNode(d) {
   const [x, y] = d;
   context.moveTo(x + 3, y);
-  context.arc(x, y, 3, 0, 2 * Math.PI);
+  context.arc(x, y, 2, 0, 2 * Math.PI);
 }
 function dotsOnCircle(index) {
   var r = radius;

@@ -24,7 +24,7 @@ var canvas = d3.select('#container')
                     .getContext('2d'),
     radius = 200,
     range = 200,
-    multiplier = qs['multiplier'] || 1;
+    multiplier = qs['multiplier'] || 2;
 var multiplierInput = document.getElementById("multiplierInput");
 var points = d3.range(range).map(dotsOnCircle);
 var interval = null
@@ -46,10 +46,10 @@ document.addEventListener('keyup', (event) => {
     multiplier = +multiplierInput.value;
     ticked();
   }
-
 });
 
 function starInterval() {
+  multiplier++;
   interval = setInterval(ticked, 1500);
 }
 
@@ -59,17 +59,18 @@ function stopInterval() {
 
 function stepLeft(){
   stopInterval();
-  multiplier-=2;
-  ticked();
+  multiplier--;
+  ticked(multiplier);
 }
 function stepRight(){
   stopInterval();
-  ticked();
+  multiplier++;
+  ticked(multiplier);
 }
 
-function ticked() {
+function ticked(step) {
   context.clearRect(0, 0, width, height);
-  multiplierInput.value = multiplier++;
+  multiplierInput.value = multiplier = step || multiplier;
   console.log(`Ticked multiplier: ${multiplier}`)
   var links = points.map(linkDots)
 

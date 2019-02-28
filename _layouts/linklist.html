@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include head_meta.html %}
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="mb-3 mt-3">
+        {{ content }}
+      </div>
+
+    </div>
+    {% include body_metrics.html %}
+  </body>
+</html>

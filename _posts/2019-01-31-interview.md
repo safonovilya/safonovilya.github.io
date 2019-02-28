@@ -25,6 +25,9 @@ Scrum
 Databases
 - <a href="https://medium.baqend.com/nosql-databases-a-survey-and-decision-guidance-ea7823a822d?gi=88bb0557fe2">https://medium.baqend.com/nosql-databases-a-survey-and-decision-guidance-ea7823a822d?gi=88bb0557fe2</a>
 
+Algorithms
+https://www.geeksforgeeks.org/fundamentals-of-algorithms/
+
 My favorite resource
 <a href="https://blog.risingstack.com/">https://blog.risingstack.com/</a>
 

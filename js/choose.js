@@ -7,6 +7,7 @@ const optionsMap = [
     ['Consistency', 'Availability', 'Partition tolerance'],
     ['Умная', 'Красивая', 'Спортивная'],
     ['Умный', 'Красивый', 'Спортивный'],
+    ['Fast', 'Cheap', 'Good'],
 ];
 
 if (qs['option']) {

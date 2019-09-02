@@ -33,6 +33,7 @@ My favorite resource
 
 
 JS learn
-	https://github.com/devSchacht/clean-code-javascript
-	https://github.com/devSchacht/You-Dont-Know-JS
-	https://github.com/devSchacht/translations
+- https://github.com/devSchacht/clean-code-javascript
+- https://github.com/devSchacht/You-Dont-Know-JS
+- https://github.com/devSchacht/translations
+- https://habr.com/ru/post/243403/

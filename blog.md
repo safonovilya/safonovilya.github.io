@@ -7,7 +7,7 @@ title: Ilya Safonov
 {% include particles.html %}
 </div> -->
 
-<blockquote class="blockquote">
+<blockquote class="blockquote m-3">
   <p class="mb-0">Make it work, then make it better</p>
   <footer class="blockquote-footer">someone clever</footer>
 </blockquote>
@@ -18,7 +18,7 @@ title: Ilya Safonov
   
   <div class="card shadow-box-hover bg-transparent mb-3 w-100">
     <div class="row no-gutters">
-      <div class="col-md-3 bg-secondary">
+      <div class="col-md-3 bg-secondary d-none d-md-block ">
         <a href="{{site.baseurl}}{{ post.url }}" class="">
             <img src="{{ post.thumbnail }}" class="card-img" alt="{{ post.title }}">
         </a>

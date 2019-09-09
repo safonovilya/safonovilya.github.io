@@ -1,0 +1,154 @@
+---
+# Front matter comment to ensure Jekyll properly reads file.
+---
+/*
+ * Globals
+ */
+
+
+$color-light: #fbf5f3;
+$color-light-tr: #fbf5f3bf;
+$color-accent: #ce6a6b;
+$color-blur-accent: #ebaca2;
+$color-second-light: #bed3c3;
+$color-second: #2378a0;
+$color-dark: #134258;
+$color-dark-tr: #134258bf;
+$color-black: #2f3337;
+
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: $color-second;
+}
+
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: $color-light;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: $color-dark;
+  border: .05rem solid $color-dark;
+}
+
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100%;
+  background-color: $color-light;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  color: $color-dark;
+  //text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+}
+
+body::after{
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .15);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  content: ' ';
+  pointer-events: none;
+}
+
+.cover-container {
+  max-width: 42em;
+}
+
+
+/*
+ * Header
+ */
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: $color-dark-tr;
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: $color-dark;
+  border-bottom-color: $color-dark;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+}
+
+
+/*
+ * Footer
+ */
+.mastfoot {
+  color: $color-dark-tr;
+}
+
+
+body {
+  //background: #FFF;
+  //filter: invert(1) hue-rotate(210deg);
+}
+
+.list-group-item{
+  background: $color-light;
+}
+
+.highlighter-rouge {
+  box-shadow: 0 0 5rem rgba(0, 0, 0, .15);
+}
+.highlight{
+  padding: 0 5px;
+}
+
+.shadow-box-hover {
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.shadow-box-hover:hover {
+  box-shadow: 0 0 1.2rem rgba(0, 0, 0, .25);
+}

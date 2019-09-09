@@ -5,14 +5,26 @@
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/colors.css">
   </head>
-  <body>
-    <div class="container">
-      <h1>Ilya Safonov</h1>
-      {{ content }}
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+<!--          <h3 class="masthead-brand">LOGO</h3>-->
+          {% include nav.html %}
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        {{ content }}
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        {% include footer.html %}
+      </footer>
+
+      {% include body_metrics.html %}
     </div>
-    {% include nav.html %}
-    {% include footer.html %}
-    {% include body_metrics.html %}
   </body>
 </html>

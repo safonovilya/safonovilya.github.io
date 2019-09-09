@@ -1,6 +1,5 @@
-<div class="container">
-    <ul class="nav justify-content-end">
-      <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="/contacts/">Contacts</a></li>
-    </ul>
-</div>
+<nav class="nav nav-masthead justify-content-center">
+    <a class="nav-link{% if page.path == 'index.md' %} active {% endif %}" href="/">Home</a>
+    <a class="nav-link{% if page.path == 'blog.md' %} active {% endif %}" href="/blog/">Blog</a>
+    <a class="nav-link{% if page.path == 'about.md' %} active {% endif %}" href="/contacts/">Contacts</a>
+</nav>

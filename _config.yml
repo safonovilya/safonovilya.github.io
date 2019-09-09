@@ -38,3 +38,9 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+scss:
+  style: compressed
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge

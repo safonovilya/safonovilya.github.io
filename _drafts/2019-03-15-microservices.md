@@ -2,7 +2,7 @@
 layout: default
 title:  "microservices"
 date:   2019-03-15 13:00:00 +0300
-thumbnail: ""
+thumbnail:  "/images/avatar.jpg"
 categories: resources
 excerpt_separator: <!--more-->
 ---

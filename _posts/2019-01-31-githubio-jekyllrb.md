@@ -17,3 +17,6 @@ Jekyll
 
 Bootstrap
 - <a href="https://getbootstrap.com/docs/4.2/getting-started/introduction/">Bootstrap</a>
+
+Code highlighting Syntax 
+- <a href="https://bnhr.xyz/2017/03/25/add-syntax-highlighting-to-your-jekyll-site-with-rouge.html">Rouge</a>

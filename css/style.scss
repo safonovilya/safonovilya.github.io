@@ -8,28 +8,40 @@
 
 body {
   // background-color: #FBF5F3;
+    font-family: 'Exo 2', sans-serif;
 }
 
 #particles-js {
   width: 100%;
   height: 160px;
   background-color: #17a2b8;
-  background-image: url("");
+  //background-image: url("");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
 }
 
 
-// #FBF5F3
-// #ce6a6b
-// #ebaca2
-// #bed3c3
-// #4a919e
-// #212e53
+$color-light: #fbf5f3;
+$color-accent: #ce6a6b;
+$color-blur-accent: #ebaca2;
+$color-second-light: #bed3c3;
+$color-second: #2378a0;
+$color-dark: #134258;
 
 
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: $color-second;
+}
 
+
+// https://fonts.google.com/specimen/PT+Sans+Narrow альтернатива
+
+// https://fonts.google.com/specimen/Pacifico - цитаты и выделение
+// https://fonts.google.com/specimen/Press+Start+2P
 
 //
 // IMPORTANT: These Sass variables are defined in Bootstrap's variables.scss. You should import that file first, then remove these.
@@ -46,7 +58,7 @@ $custom-control-indicator-disabled-bg: #e9ecef;
 $custom-control-description-disabled-color: #868e96;
 $white: white;
 $theme-colors: (
-        'primary': #08d
+  'primary': $color-blur-accent
 );
 
 //
@@ -206,8 +218,9 @@ $switch-transition: .2s all !default;
 .mb-3 .hide{
   display: none;
 }
-//
-//.card-img-top{
-//  max-width: 100px;
-//  max-height: 100px;
-//}
+
+.blockquote p{
+  font-family: 'Pacifico', cursive;
+  font-size: 1.25rem;
+}
+

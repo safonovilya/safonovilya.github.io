@@ -10,7 +10,7 @@ title: Ilya Safonov Pages
 <h1 class="cover-heading">Ilya Safonov</h1>
 <p class="lead">Software Engineer</p>
 <p class="lead">
-  <a href="/blog/" class="btn btn-lg btn-secondary">Learn more</a>
+  <a href="/blog" class="btn btn-lg btn-secondary">Learn more</a>
 </p>
 
 {% comment %}

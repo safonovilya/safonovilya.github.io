@@ -1,0 +1,167 @@
+---
+#  Front matter comment to ensure Jekyll properly reads file.
+---
+
+$color-arrow: black;
+$color-bg: white;
+$height: 5em;
+$width: 5em;
+
+.clock-container {
+  width: 4 * $width + 1;
+}
+
+.clock {
+  border-radius: 50%;
+  background: $color-bg /*url(/images/clock-bg.svg) no-repeat center*/;
+  height: $height;
+  position: relative;
+  width: $width;
+  display: inline-block;
+}
+
+.hours {
+  background: $color-arrow;
+  height: $height/2;
+  left: 49%;
+  position: absolute;
+  top: 0;
+  transform-origin: 50% 100%;
+  width: 2%;
+}
+
+.minutes {
+  background: $color-arrow;
+  height: $height/2;
+  left: 49%;
+  position: absolute;
+  top: 0;
+  transform-origin: 50% 100%;
+  width: 2%;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.hours-container.animate {
+  animation: rotate 43200s infinite linear;
+}
+
+.minutes-container.animate {
+  animation: rotate 3600s infinite linear;
+}
+
+.seconds-container.animate {
+  animation: rotate 60s infinite linear;
+}
+
+.minutes-container, .hours-container, .seconds-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0
+}
+
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotateZ(360deg);
+    transform: rotateZ(360deg)
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotateZ(360deg);
+    transform: rotateZ(360deg)
+  }
+}
+
+.hours {
+  -webkit-transform: rotateZ(360deg);
+  transition: transform 1s, -webkit-transform 1s;
+}
+
+.minutes {
+  -webkit-transform: rotateZ(360deg);
+  transition: transform 1s, -webkit-transform 1s ;
+}
+
+// 0
+// 90
+// 135
+// 180
+// 225
+// 270
+
+
+.deg0 {
+  transform: rotateZ(0deg);
+  transition: transform 1s, -webkit-transform 1s;
+}
+.deg45 {
+  transform: rotateZ(45deg);
+  transition: transform 1s, -webkit-transform 1s;
+}
+.deg90 {
+  transform: rotateZ(90deg);
+  transition: transform 1s, -webkit-transform 1s;
+}
+.deg135 {
+  transform: rotateZ(135deg);
+  transition: transform 1s, -webkit-transform 1s;
+}
+.deg180 {
+  transform: rotateZ(180deg);
+  transition: transform 1s, -webkit-transform 1s;
+}
+.deg225 {
+  transform: rotateZ(225deg);
+  transition: transform 1s, -webkit-transform 1s;
+}
+.deg270 {
+  transform: rotateZ(270deg);
+  transition: transform 1s, -webkit-transform 1s;
+}
+.deg315 {
+  transform: rotateZ(315deg);
+  transition: transform 1s, -webkit-transform 1s;
+}
+
+
+
+///
+
+
+
+/*.seconds {
+  //background: red;
+  background: black;
+  width: 1.5%;
+  height: 42%;
+  position: absolute;
+  left: 49.25%;
+  top: 20%;
+  -webkit-transform-origin: 50% 71%;
+  transform-origin: 50% 71%;
+  z-index: 8
+}*/
+
+/*
+.clock::after {
+  background: red;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 4%;
+  height: 4%;
+  z-index: 10
+}*/

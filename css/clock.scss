@@ -2,13 +2,22 @@
 #  Front matter comment to ensure Jekyll properly reads file.
 ---
 
+$speed-animation: 0.75s;
 $color-arrow: black;
 $color-bg: white;
-$height: 5em;
-$width: 5em;
+$height: 30px;
+$width: 30px;
+
+.cover {
+  min-width: 49rem;
+}
 
 .clock-container {
   width: 4 * $width + 1;
+  min-width: 4 * $width + 1;
+  display: inline-block;
+  //font-size: 0;
+  letter-spacing: -1px;
 }
 
 .clock {
@@ -18,26 +27,31 @@ $width: 5em;
   position: relative;
   width: $width;
   display: inline-block;
+  font-size: 1rem;
 }
 
 .hours {
   background: $color-arrow;
   height: $height/2;
-  left: 49%;
+  //left: 49%;
+  left: $height/2-1;
   position: absolute;
   top: 0;
   transform-origin: 50% 100%;
   width: 2%;
+  min-width: 2px;
 }
 
 .minutes {
   background: $color-arrow;
   height: $height/2;
-  left: 49%;
+  //left: 49%;
+  left: $height/2-1;
   position: absolute;
   top: 0;
   transform-origin: 50% 100%;
   width: 2%;
+  min-width: 2px;
 }
 
 @keyframes rotate {
@@ -63,7 +77,8 @@ $width: 5em;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0
+  left: 0;
+  font-size: 1rem;
 }
 
 
@@ -83,12 +98,12 @@ $width: 5em;
 
 .hours {
   -webkit-transform: rotateZ(360deg);
-  transition: transform 1s, -webkit-transform 1s;
+  transition: transform $speed-animation, -webkit-transform $speed-animation;
 }
 
 .minutes {
   -webkit-transform: rotateZ(360deg);
-  transition: transform 1s, -webkit-transform 1s ;
+  transition: transform $speed-animation, -webkit-transform $speed-animation;
 }
 
 // 0
@@ -101,41 +116,46 @@ $width: 5em;
 
 .deg0 {
   transform: rotateZ(0deg);
-  transition: transform 1s, -webkit-transform 1s;
-}
-.deg45 {
-  transform: rotateZ(45deg);
-  transition: transform 1s, -webkit-transform 1s;
-}
-.deg90 {
-  transform: rotateZ(90deg);
-  transition: transform 1s, -webkit-transform 1s;
-}
-.deg135 {
-  transform: rotateZ(135deg);
-  transition: transform 1s, -webkit-transform 1s;
-}
-.deg180 {
-  transform: rotateZ(180deg);
-  transition: transform 1s, -webkit-transform 1s;
-}
-.deg225 {
-  transform: rotateZ(225deg);
-  transition: transform 1s, -webkit-transform 1s;
-}
-.deg270 {
-  transform: rotateZ(270deg);
-  transition: transform 1s, -webkit-transform 1s;
-}
-.deg315 {
-  transform: rotateZ(315deg);
-  transition: transform 1s, -webkit-transform 1s;
+  transition: transform $speed-animation, -webkit-transform $speed-animation;
 }
 
+.deg45 {
+  transform: rotateZ(45deg);
+  transition: transform $speed-animation, -webkit-transform $speed-animation;
+}
+
+.deg90 {
+  transform: rotateZ(90deg);
+  transition: transform $speed-animation, -webkit-transform $speed-animation;
+}
+
+.deg135 {
+  transform: rotateZ(135deg);
+  transition: transform $speed-animation, -webkit-transform $speed-animation;
+}
+
+.deg180 {
+  transform: rotateZ(180deg);
+  transition: transform $speed-animation, -webkit-transform $speed-animation;
+}
+
+.deg225 {
+  transform: rotateZ(225deg);
+  transition: transform $speed-animation, -webkit-transform $speed-animation;
+}
+
+.deg270 {
+  transform: rotateZ(270deg);
+  transition: transform $speed-animation, -webkit-transform $speed-animation;
+}
+
+.deg315 {
+  transform: rotateZ(315deg);
+  transition: transform $speed-animation, -webkit-transform $speed-animation;
+}
 
 
 ///
-
 
 
 /*.seconds {

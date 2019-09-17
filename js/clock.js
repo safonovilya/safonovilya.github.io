@@ -228,26 +228,26 @@ const NumbersMap = {
     {"h": "180", "m": "270"},
     {"h": "180", "m": "0"},
 
-    {"h": "225", "m": "225"},
-    {"h": "225", "m": "225"},
-    {"h": "180", "m": "0"},
-    {"h": "180", "m": "0"},
 
     {"h": "225", "m": "225"},
     {"h": "225", "m": "225"},
-    {"h": "180", "m": "0"},
-    {"h": "180", "m": "0"},
-
-
-    {"h": "225", "m": "225"},
-    {"h": "225", "m": "225"},
-    {"h": "180", "m": "0"},
-    {"h": "0", "m": "180"},
+    {"h": "225", "m": "0"},
+    {"h": "225", "m": "0"},
 
     {"h": "225", "m": "225"},
+    {"h": "180", "m": "45"},
+    {"h": "180", "m": "45"},
+    {"h": "225", "m": "225"},
+
+    {"h": "225", "m": "225"},
+    {"h": "180", "m": "0"},
+    {"h": "180", "m": "0"},
+    {"h": "225", "m": "225"},
+
     {"h": "225", "m": "225"},
     {"h": "90", "m": "0"},
-    {"h": "0", "m": "270"}
+    {"h": "0", "m": "270"},
+    {"h": "225", "m": "225"}
   ],
   8: [
     {"h": "90", "m": "180"},
@@ -322,23 +322,29 @@ function init(){
   // set Timeout
   buildClock();
 
+
+  // let counter = 0;
+  // setInterval(() => {
+  //   counter++;
+  //   if (counter%2) {
+  //     // document.getElementsByClassName(CLOCK_CONTAINER_CLASS_NAME)[0].parentElement.classList.remove('reset');
+  //   } else {
+  //     // document.getElementsByClassName(CLOCK_CONTAINER_CLASS_NAME)[0].parentElement.classList.add('reset');
+  //   }
+  // }, 1000);
+  updateTime();
+
+}
+function updateTime() {
   const [h1, h2, m1, m2, s1, s2] = document.getElementsByClassName(CLOCK_CONTAINER_CLASS_NAME);
+
   let [nh1, nh2] = returnTwoDigits(new Date().getHours());
   let [nm1, nm2] = returnTwoDigits(new Date().getMinutes());
-  let [ns1, ns2] = returnTwoDigits(new Date().getSeconds());
 
   updateClasses(h1.getElementsByClassName(CLOCK_ELEMENT_CLASS_NAME), nh1);
   updateClasses(h2.getElementsByClassName(CLOCK_ELEMENT_CLASS_NAME), nh2);
   updateClasses(m1.getElementsByClassName(CLOCK_ELEMENT_CLASS_NAME), nm1);
   updateClasses(m2.getElementsByClassName(CLOCK_ELEMENT_CLASS_NAME), nm2);
-  updateClasses(s1.getElementsByClassName(CLOCK_ELEMENT_CLASS_NAME), ns1);
-  updateClasses(s2.getElementsByClassName(CLOCK_ELEMENT_CLASS_NAME), ns2);
-
-  setInterval(() => {
-    [ns1, ns2] = returnTwoDigits(new Date().getSeconds());
-    updateClasses(s1.getElementsByClassName(CLOCK_ELEMENT_CLASS_NAME), ns1);
-    updateClasses(s2.getElementsByClassName(CLOCK_ELEMENT_CLASS_NAME), ns2);
-  }, 1000);
 }
 
 function returnTwoDigits(number) {
@@ -354,9 +360,6 @@ function buildClock() {
   const itm = document.getElementsByClassName(CLOCK_ELEMENT_CLASS_NAME)[0];
   fillContainerByClocks(containerElement, itm);
 
-  // make 4 containers
-  containerElement.parentElement.appendChild(containerElement.cloneNode(true));
-  containerElement.parentElement.appendChild(containerElement.cloneNode(true));
   containerElement.parentElement.appendChild(containerElement.cloneNode(true));
   containerElement.parentElement.appendChild(containerElement.cloneNode(true));
   containerElement.parentElement.appendChild(containerElement.cloneNode(true));

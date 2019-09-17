@@ -2,14 +2,17 @@
 #  Front matter comment to ensure Jekyll properly reads file.
 ---
 
-$speed-animation: 0.75s;
+$speed-animation: 7s;
 $color-arrow: black;
 $color-bg: white;
 $height: 30px;
 $width: 30px;
 
-.cover {
-  min-width: 49rem;
+$degree-step: 45;
+$angels: 360/$degree-step;
+
+.container {
+  width: 300px;
 }
 
 .clock-container {
@@ -54,23 +57,6 @@ $width: 30px;
   min-width: 2px;
 }
 
-@keyframes rotate {
-  100% {
-    transform: rotateZ(360deg);
-  }
-}
-
-.hours-container.animate {
-  animation: rotate 43200s infinite linear;
-}
-
-.minutes-container.animate {
-  animation: rotate 3600s infinite linear;
-}
-
-.seconds-container.animate {
-  animation: rotate 60s infinite linear;
-}
 
 .minutes-container, .hours-container, .seconds-container {
   position: absolute;
@@ -82,106 +68,75 @@ $width: 30px;
 }
 
 
-@-webkit-keyframes rotate {
-  100% {
-    -webkit-transform: rotateZ(360deg);
-    transform: rotateZ(360deg)
+@mixin deg() {
+  @for $i from 0 through $angels {
+    .deg#{$i*45} {
+      transform: rotateZ(#{$i*$degree-step}deg);
+      .animated &{
+        &.hours-container {
+          animation: rotate#{$i*45};
+          transition: transform $speed-animation, -webkit-transform $speed-animation;
+          animation-duration: $speed-animation;
+          animation-timing-function: linear;
+          animation-delay: $speed-animation/2;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+        &.minutes-container {
+          animation: backrotate#{$i*45};
+          transition: transform $speed-animation, -webkit-transform $speed-animation;
+          animation-duration: $speed-animation;
+          animation-timing-function: linear;
+          animation-delay: $speed-animation/2;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+      }
+      .animated:hover &{
+        &.hours-container {
+          animation: rotate#{$i*45};
+          transition: transform $speed-animation, -webkit-transform $speed-animation;
+          animation-duration: $speed-animation;
+          animation-timing-function: linear;
+          animation-delay: $speed-animation/2;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+        &.minutes-container {
+          animation: backrotate#{$i*45};
+          transition: transform $speed-animation, -webkit-transform $speed-animation;
+          animation-duration: $speed-animation;
+          animation-timing-function: linear;
+          animation-delay: $speed-animation/2;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+      }
+    }
+
+    @keyframes rotate#{$i*45} {
+      0% {
+        transform: rotateZ(#{$i*$degree-step}deg)
+      }
+      50% {
+        transform: rotateZ(#{180+$i*$degree-step}deg)
+      }
+      100% {
+        transform: rotateZ(#{360+$i*$degree-step}deg)
+      }
+    }
+    @keyframes backrotate#{$i*45} {
+      0% {
+        transform: rotateZ(#{$i*$degree-step}deg)
+      }
+      50% {
+        transform: rotateZ(#{-180+$i*$degree-step}deg)
+      }
+      100% {
+        transform: rotateZ(#{-360+$i*$degree-step}deg)
+      }
+    }
+
   }
 }
-
-@keyframes rotate {
-  100% {
-    -webkit-transform: rotateZ(360deg);
-    transform: rotateZ(360deg)
-  }
-}
-
-.hours {
-  -webkit-transform: rotateZ(360deg);
-  transition: transform $speed-animation, -webkit-transform $speed-animation;
-}
-
-.minutes {
-  -webkit-transform: rotateZ(360deg);
-  transition: transform $speed-animation, -webkit-transform $speed-animation;
-}
-
-// 0
-// 90
-// 135
-// 180
-// 225
-// 270
-
-
-.deg0 {
-  transform: rotateZ(0deg);
-  transition: transform $speed-animation, -webkit-transform $speed-animation;
-}
-
-.deg45 {
-  transform: rotateZ(45deg);
-  transition: transform $speed-animation, -webkit-transform $speed-animation;
-}
-
-.deg90 {
-  transform: rotateZ(90deg);
-  transition: transform $speed-animation, -webkit-transform $speed-animation;
-}
-
-.deg135 {
-  transform: rotateZ(135deg);
-  transition: transform $speed-animation, -webkit-transform $speed-animation;
-}
-
-.deg180 {
-  transform: rotateZ(180deg);
-  transition: transform $speed-animation, -webkit-transform $speed-animation;
-}
-
-.deg225 {
-  transform: rotateZ(225deg);
-  transition: transform $speed-animation, -webkit-transform $speed-animation;
-}
-
-.deg270 {
-  transform: rotateZ(270deg);
-  transition: transform $speed-animation, -webkit-transform $speed-animation;
-}
-
-.deg315 {
-  transform: rotateZ(315deg);
-  transition: transform $speed-animation, -webkit-transform $speed-animation;
-}
-
-
-///
-
-
-/*.seconds {
-  //background: red;
-  background: black;
-  width: 1.5%;
-  height: 42%;
-  position: absolute;
-  left: 49.25%;
-  top: 20%;
-  -webkit-transform-origin: 50% 71%;
-  transform-origin: 50% 71%;
-  z-index: 8
-}*/
-
-/*
-.clock::after {
-  background: red;
-  border-radius: 50%;
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 4%;
-  height: 4%;
-  z-index: 10
-}*/
+@include deg();

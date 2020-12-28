@@ -1,0 +1,10 @@
+{
+  "name": "safonovilya.github.io",
+  "version": "1.0.0",
+  "dependencies": {
+  },
+  "scripts": {
+    "start": "bundle exec jekyll serve",
+    "start:dev": "bundle exec jekyll serve --drafts"
+  }
+}

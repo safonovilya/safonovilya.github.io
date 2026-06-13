@@ -1,96 +1,227 @@
-<!DOCTYPE HTML>
-<!--
-	Identity by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Ilya Safonov — Software Engineer</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="Ilya Safonov — software engineer. Portfolio and contacts." />
-		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
-		<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ilya Safonov</title>
+  <meta name="description" content="Principal Engineer. I help large engineering organisations navigate complex transformations." />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #6b7280;
+      --subtle: #9ca3af;
+      --border: rgba(0, 0, 0, 0.1);
+    }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f0f;
+        --text: #f0f0f0;
+        --muted: #9ca3af;
+        --subtle: #6b7280;
+        --border: rgba(255, 255, 255, 0.1);
+      }
+    }
 
-				<!-- Main -->
-					<section id="main">
-						<header>
-							<span class="avatar"><img src="images/avatar.jpg" alt="" /></span>
-							<h1>Ilya Safonov</h1>
-							<p>Software Engineer</p>
-						</header>
-						<!--
-						<hr />
-						<h2>Extra Stuff!</h2>
-						<form method="post" action="#">
-							<div class="fields">
-								<div class="field">
-									<input type="text" name="name" id="name" placeholder="Name" />
-								</div>
-								<div class="field">
-									<input type="email" name="email" id="email" placeholder="Email" />
-								</div>
-								<div class="field">
-									<select name="department" id="department">
-										<option value="">Department</option>
-										<option value="sales">Sales</option>
-										<option value="tech">Tech Support</option>
-										<option value="null">/dev/null</option>
-									</select>
-								</div>
-								<div class="field">
-									<textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
-								</div>
-								<div class="field">
-									<input type="checkbox" id="human" name="human" /><label for="human">I'm a human</label>
-								</div>
-								<div class="field">
-									<label>But are you a robot?</label>
-									<input type="radio" id="robot_yes" name="robot" /><label for="robot_yes">Yes</label>
-									<input type="radio" id="robot_no" name="robot" /><label for="robot_no">No</label>
-								</div>
-							</div>
-							<ul class="actions special">
-								<li><a href="#" class="button">Get Started</a></li>
-							</ul>
-						</form>
-						<hr />
-						-->
-						<footer>
-							<ul class="icons">
-								<li><a href="https://github.com/safonovilya" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-								<li><a href="https://t.me/ilya_saf" class="icon brands fa-telegram"><span class="label">Telegram</span></a></li>
-								<li><a href="https://www.linkedin.com/in/safonovilya" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="mailto:safonov.ilya@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-							</ul>
-						</footer>
-					</section>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-				<!-- Footer -->
-					<footer id="footer">
-						<ul class="copyright">
-							<li>&copy; Ilya Safonov</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</footer>
+    html { font-size: 16px; }
 
-			</div>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
 
-		<!-- Scripts -->
-			<script>
-				if ('addEventListener' in window) {
-					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
-					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-				}
-			</script>
+    main {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 80px 24px 80px;
+    }
 
-	</body>
+    /* Fade-in cascade */
+    .fade {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: none; }
+    }
+    .d1 { animation-delay: 0ms; }
+    .d2 { animation-delay: 80ms; }
+    .d3 { animation-delay: 180ms; }
+    .d4 { animation-delay: 280ms; }
+    .d5 { animation-delay: 400ms; }
+
+    /* Hero */
+    .name {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .role {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    /* Bio */
+    .bio {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .bio strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Links */
+    .links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s ease;
+    }
+
+    .links a:hover { color: var(--text); }
+
+    .links a svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Divider */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 44px 0;
+    }
+
+    /* Projects */
+    .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 16px;
+    }
+
+    .project {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project:last-child { border-bottom: none; }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 5px;
+    }
+
+    .project-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .project-year {
+      font-size: 13px;
+      color: var(--subtle);
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="name fade d1">Ilya Safonov</p>
+    <p class="role fade d2">Principal Engineer</p>
+
+    <div class="bio fade d3">
+      <p>
+        I help large engineering organisations navigate complex transformations —
+        from legacy systems to modern platforms, from chaos to predictable delivery.
+      </p>
+      <br>
+      <p>
+        My work doesn't end at the codebase. Real change lands when the entire chain
+        of people — engineers, leads, stakeholders — shares the same mental model.
+        I bring <strong>calm, trust, and momentum</strong> to systems that need all three.
+      </p>
+    </div>
+
+    <div class="links fade d4">
+      <a href="mailto:hi@ilyasafonov.dev" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        hi@ilyasafonov.dev
+      </a>
+      <a href="https://www.linkedin.com/in/safonovilya" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+
+    <hr class="fade d5">
+
+    <div class="fade d5">
+      <p class="section-label">Projects</p>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Mental health</span>
+          <span class="project-year">2024 – now</span>
+        </div>
+        <p class="project-desc">Learning to treat my own wellbeing with the same rigour I apply to production systems.</p>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Surviving COVID</span>
+          <span class="project-year">2020</span>
+        </div>
+        <p class="project-desc">Shipped under pressure. No rollback available.</p>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Moving to America</span>
+          <span class="project-year">2017 – now</span>
+        </div>
+        <p class="project-desc">The longest migration I've ever run. Still in progress, still learning.</p>
+      </div>
+    </div>
+  </main>
+</body>
 </html>

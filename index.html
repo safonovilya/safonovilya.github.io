@@ -43,6 +43,24 @@
       --border: rgba(0, 0, 0, 0.1);
     }
 
+    html.high-contrast {
+      --muted: #1f2937;
+      --subtle: #374151;
+      --border: rgba(0, 0, 0, 0.25);
+    }
+
+    html.high-contrast.dark {
+      --muted: #e5e7eb;
+      --subtle: #d1d5db;
+      --border: rgba(255, 255, 255, 0.25);
+    }
+
+    html.no-motion * {
+      animation-duration: 0ms !important;
+      animation-delay: 0ms !important;
+      transition-duration: 0ms !important;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { font-size: 16px; }
@@ -63,8 +81,26 @@
     main {
       max-width: 560px;
       margin: 0 auto;
-      padding: 80px 24px 80px;
+      padding: 80px 24px 48px;
+      position: relative;
     }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: absolute;
+      top: 80px;
+      right: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--subtle);
+      transition: color 0.15s ease;
+      line-height: 0;
+    }
+
+    .theme-toggle:hover { color: var(--text); }
+    .theme-toggle svg { width: 18px; height: 18px; }
 
     /* Fade-in cascade */
     .fade {
@@ -183,10 +219,43 @@
       color: var(--muted);
       line-height: 1.6;
     }
+
+    /* Accessibility bar */
+    .a11y-bar {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .a11y-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      color: var(--subtle);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0;
+      transition: color 0.15s ease;
+      font-family: inherit;
+    }
+
+    .a11y-btn:hover { color: var(--muted); }
+    .a11y-btn.active { color: var(--text); }
+    .a11y-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
   </style>
 </head>
 <body>
   <main>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+      <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
     <p class="name fade d1">Ilya Safonov</p>
     <p class="role fade d2">Principal Engineer</p>
 
@@ -244,16 +313,79 @@
       </div>
     </div>
   </main>
+
+  <div class="a11y-bar" role="group" aria-label="Accessibility options">
+    <button class="a11y-btn" id="contrastBtn" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor" stroke="none"/></svg>
+      High contrast
+    </button>
+    <button class="a11y-btn" id="motionBtn" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M12 12m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0" stroke-dasharray="3 3"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+      Reduce motion
+    </button>
+  </div>
+
   <script>
     (function() {
-      var h = new Date().getHours();
-      var dark = h >= 20 || h < 7;
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (dark || prefersDark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.add('light');
+      var html = document.documentElement;
+      var ls = localStorage;
+
+      // Theme: time-based or system, with manual override persisted
+      function applyTheme(theme) {
+        html.classList.remove('dark', 'light');
+        html.classList.add(theme);
+        updateThemeIcon(theme);
       }
+
+      function updateThemeIcon(theme) {
+        document.getElementById('iconSun').style.display = theme === 'dark' ? 'block' : 'none';
+        document.getElementById('iconMoon').style.display = theme === 'light' ? 'block' : 'none';
+      }
+
+      function resolveAutoTheme() {
+        var h = new Date().getHours();
+        var timeIsDark = h >= 20 || h < 7;
+        var systemIsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        return (timeIsDark || systemIsDark) ? 'dark' : 'light';
+      }
+
+      var savedTheme = ls.getItem('theme');
+      applyTheme(savedTheme || resolveAutoTheme());
+
+      document.getElementById('themeToggle').addEventListener('click', function() {
+        var next = html.classList.contains('dark') ? 'light' : 'dark';
+        ls.setItem('theme', next);
+        applyTheme(next);
+      });
+
+      // High contrast
+      var contrastBtn = document.getElementById('contrastBtn');
+      if (ls.getItem('contrast') === '1') {
+        html.classList.add('high-contrast');
+        contrastBtn.classList.add('active');
+        contrastBtn.setAttribute('aria-pressed', 'true');
+      }
+      contrastBtn.addEventListener('click', function() {
+        var on = html.classList.toggle('high-contrast');
+        contrastBtn.classList.toggle('active', on);
+        contrastBtn.setAttribute('aria-pressed', String(on));
+        ls.setItem('contrast', on ? '1' : '0');
+      });
+
+      // Reduce motion
+      var motionBtn = document.getElementById('motionBtn');
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (ls.getItem('motion') === '0' || (prefersReduced && ls.getItem('motion') !== '1')) {
+        html.classList.add('no-motion');
+        motionBtn.classList.add('active');
+        motionBtn.setAttribute('aria-pressed', 'true');
+      }
+      motionBtn.addEventListener('click', function() {
+        var on = html.classList.toggle('no-motion');
+        motionBtn.classList.toggle('active', on);
+        motionBtn.setAttribute('aria-pressed', String(on));
+        ls.setItem('motion', on ? '0' : '1');
+      });
     })();
   </script>
 </body>

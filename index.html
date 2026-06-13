@@ -87,18 +87,38 @@
       transition: background-color 0.4s ease, color 0.3s ease;
     }
 
+    /* Aura — warm in light, cold in dark */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -15vw;
+      right: -15vw;
+      width: 55vw;
+      height: 55vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      transition: background 0.8s ease;
+    }
+
+    html.dark body::before {
+      background: radial-gradient(circle, rgba(96, 130, 220, 0.07) 0%, transparent 70%);
+    }
+
     main {
       max-width: 560px;
       margin: 0 auto;
       padding: 80px 24px 48px;
       position: relative;
+      z-index: 1;
     }
 
-    /* Theme toggle */
+    /* Theme toggle — fixed top-right */
     .theme-toggle {
-      position: absolute;
-      top: 76px;
-      right: 24px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
       background: none;
       border: none;
       cursor: pointer;
@@ -107,6 +127,7 @@
       line-height: 0;
       border-radius: 50%;
       transition: color 0.15s ease, background-color 0.15s ease;
+      z-index: 100;
     }
     .theme-toggle:hover { color: var(--text); background: var(--border); }
     .theme-toggle svg { width: 18px; height: 18px; display: block; }
@@ -225,30 +246,26 @@
       line-height: 1.6;
     }
 
-    /* Accessibility button */
-    .a11y-bar {
-      max-width: 560px;
-      margin: 0 auto;
-      padding: 0 24px 52px;
-    }
-
+    /* Accessibility button — fixed bottom-right */
     .a11y-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
       background: none;
       border: none;
       cursor: pointer;
-      padding: 4px;
+      padding: 6px;
       line-height: 0;
-      /* always visible: uses text color at moderate opacity */
       color: var(--text);
       opacity: 0.3;
       transition: opacity 0.2s ease;
-      border-radius: 4px;
+      border-radius: 50%;
+      z-index: 100;
     }
     .a11y-btn:hover { opacity: 0.6; }
     .a11y-btn.active { opacity: 1; }
     .a11y-btn svg { width: 22px; height: 22px; display: block; }
 
-    /* strikethrough line hidden when active */
     .a11y-btn .strike { transition: opacity 0.2s ease; }
     .a11y-btn.active .strike { opacity: 0; }
   </style>
@@ -327,16 +344,13 @@
     </div>
   </main>
 
-  <div class="a11y-bar">
-    <!-- Universal accessibility icon. Strikethrough = off, clean = on -->
-    <button class="a11y-btn" id="a11yBtn" aria-label="Enable accessibility mode" aria-pressed="false" title="Accessibility: high contrast + reduce motion">
+  <button class="a11y-btn" id="a11yBtn" aria-label="Enable accessibility mode" aria-pressed="false" title="Accessibility: high contrast + reduce motion">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle cx="12" cy="4" r="1.5" fill="currentColor" stroke="none"/>
         <path d="M9 9h6M12 9v7M9 21l3-5 3 5"/>
         <line class="strike" x1="3" y1="3" x2="21" y2="21" stroke-width="1.5"/>
       </svg>
     </button>
-  </div>
 
   <script>
     (function() {

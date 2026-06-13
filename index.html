@@ -27,16 +27,37 @@
       }
     }
 
+    html.dark {
+      --bg: #0f0f0f;
+      --text: #f0f0f0;
+      --muted: #9ca3af;
+      --subtle: #6b7280;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    html.light {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #6b7280;
+      --subtle: #9ca3af;
+      --border: rgba(0, 0, 0, 0.1);
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { font-size: 16px; }
 
     body {
-      background: var(--bg);
+      background-color: Canvas;
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
+      animation: bgFade 0.7s ease forwards;
+    }
+
+    @keyframes bgFade {
+      to { background-color: var(--bg); }
     }
 
     main {
@@ -223,5 +244,17 @@
       </div>
     </div>
   </main>
+  <script>
+    (function() {
+      var h = new Date().getHours();
+      var dark = h >= 20 || h < 7;
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark || prefersDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -12,8 +12,8 @@
   function applyTheme(theme) {
     html.classList.remove('dark', 'light');
     html.classList.add(theme);
-    document.getElementById('iconSun').style.display  = theme === 'dark'  ? 'block' : 'none';
-    document.getElementById('iconMoon').style.display = theme === 'light' ? 'block' : 'none';
+    document.getElementById('iconSun').style.display  = theme === 'light' ? 'block' : 'none';
+    document.getElementById('iconMoon').style.display = theme === 'dark'  ? 'block' : 'none';
   }
 
   applyTheme(ls.getItem('theme') || resolveAutoTheme());
